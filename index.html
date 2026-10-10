@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Daily Focus helps you choose and finish three important tasks each day." />
+    <title>Daily Focus</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header">
+      <div class="brand">
+        <p class="eyebrow">Today’s work</p>
+        <h1>Daily Focus</h1>
+        <p class="tagline">Choose three priorities. Finish what matters.</p>
+      </div>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">
+        <span class="theme-toggle-label">Dark mode</span>
+      </button>
+    </header>
+
+    <main id="main" class="layout">
+      <section class="panel progress-panel" aria-labelledby="progress-heading">
+        <div class="panel-heading">
+          <h2 id="progress-heading">Progress</h2>
+          <p id="progress-summary" class="muted">0 of 0 tasks complete</p>
+        </div>
+        <div
+          class="progress-track"
+          role="progressbar"
+          aria-labelledby="progress-heading"
+          aria-valuemin="0"
+          aria-valuemax="0"
+          aria-valuenow="0"
+          id="progress-bar"
+        >
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </section>
+
+      <section class="panel priorities-panel" aria-labelledby="priorities-heading">
+        <div class="panel-heading">
+          <h2 id="priorities-heading">Today’s priorities</h2>
+          <p class="muted">Pin up to three unfinished tasks.</p>
+        </div>
+        <ol id="priority-list" class="priority-list"></ol>
+        <p id="priority-hint" class="hint" role="status"></p>
+      </section>
+
+      <section class="panel tasks-panel" aria-labelledby="tasks-heading">
+        <div class="panel-heading">
+          <h2 id="tasks-heading">Tasks</h2>
+        </div>
+
+        <form id="task-form" class="task-form">
+          <label for="task-input">New task</label>
+          <div class="task-form-row">
+            <input
+              id="task-input"
+              name="task"
+              type="text"
+              maxlength="120"
+              autocomplete="off"
+              placeholder="Write the next important thing…"
+            />
+            <button type="submit" class="btn btn-primary">Add</button>
+          </div>
+        </form>
+
+        <div class="filters" role="group" aria-label="Filter tasks">
+          <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="active" aria-pressed="false">Active</button>
+          <button type="button" class="filter-btn" data-filter="completed" aria-pressed="false">Completed</button>
+        </div>
+
+        <p id="list-status" class="visually-hidden" role="status" aria-live="polite"></p>
+        <ul id="task-list" class="task-list"></ul>
+
+        <div id="empty-state" class="empty-state" hidden>
+          <p class="empty-title">Your list is clear</p>
+          <p>Add a task above, then pin up to three as today’s focus.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Saved on this device. Refresh anytime — your focus stays with you.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
